@@ -17,23 +17,23 @@ for(var i=0; i < updateBtns.length;i++){
 
 
 function updateUserOrder(productId, action){
-            console.log('User is logged in, sending data...')
+	console.log('User is authenticated, sending data...')
 
-            var url = '/update_item/'
+		var url = '/update_item/'
 
-            fetch(url, {
-               method:'POST',
-               headers:{
-               'Content-Type':'application/json',
-               'x-csrftoken':csrftoken,
-               },
-               body:JSON.stringify({'productId': productId, 'action': action})
-            })
-            .then((response) =>{
-               return response.json()
-            })
-            .then((data) =>{
-               console.log('data:', data)
-            })
-
+		fetch(url, {
+			method:'POST',
+			headers:{
+				'Content-Type':'application/json',
+				'X-CSRFToken':csrftoken,
+			},
+			body:JSON.stringify({'productId':productId, 'action':action})
+		})
+		.then((response) => {
+		   return response.json();
+		})
+		.then((data) => {
+		console.log('data:', data)
+		    location.reload()
+		});
 }
